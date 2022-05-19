@@ -33,40 +33,40 @@ class Game{
     player2.addImage("player2", player_img);
     players=[player1,player2];
 
-    obstacleGroup = new Group();
-    
-        console.log(frameCount)
-       
         }
+    
     play(){
         
-                form.hide();
+    form.hide();
 
-                Player.getPlayerInfo();
-                player.getPlayerAtEnd();
-                 image(back_img, 0, 0, 1000, 800);
-                 var x =100;
-                 var y=200;
-                 var index =0;
-                 drawSprites();
-                 for(var plr in allPlayers){
+        Player.getPlayerInfo();
+        player.getPlayerAtEnd();
+        image(back_img, 0, 0, 1000, 800);
+        var x =100;
+        var y=200;
+        var index =0;
+        drawSprites();
+        for(var plr in allPlayers){         
                     
-                    
-                     index = index+1;
-                     x = 500-allPlayers[plr].distance;
-                     y=500;
-                     
-                     players[index -1].x = x;
-                     players[index - 1].y = y;
+            index = index+1;
+            x = 500-allPlayers[plr].distance;
+            y=500;
+                 
+            players[index -1].x = x;
+            players[index - 1].y = y;
                        
-                     if(index === player.index){
+           if(index === player.index){
                          
-                         fill("black");
-                         textSize(25);
-                         text(allPlayers[plr].name ,x-25,y+25);
-
-                         
-                     }
+            fill("red");
+            textSize(20);
+            //adicione o código para exibir o nome do jogador na respectiva cesta
+            textSize(25);
+            fill("white");
+            text("Jogador 1: " +allPlayers.player1.score,50,50);
+            text("Jogador 2: " + allPlayers.player2.score, 50, 100);
+    
+                       
+            }
                     
                          textSize(25);
                          fill("white");
@@ -112,10 +112,6 @@ class Game{
                      }
                      fruitGroup.add(fruits);
                      
-                     
-                 }
-                 if(frameCount % 40 === 0){
-                    this.addObstacles()
                  }
                  
                   if (player.index !== null) {
@@ -125,21 +121,10 @@ class Game{
                               player.score =player.score+1;
                               player.update();
                               
-
                           }
-                  
                           
                       }
-
-                      if(obstacleGroup.isTouching(players)){
-                       // gameState = 0;
-                       // gameState = 1;
-                       // gameState = 2;
-                       // gameState = 3;
-                      }
                   }
-                }
-            
                 
 
          
@@ -147,38 +132,20 @@ class Game{
         
          
 
-    
-                showRank() {
-                    alert("Incrível!! Você terminou o jogo! Sua classificação é:" +player.rank)
-                  }
+    }
+    showRank() {
+        alert("Incrível!! Você terminou o jogo! Sua classificação é:" +player.rank)
+      }
 
-                  gameOver() {
-                    textSize(40)
-                    fill("white")
-                    text("FIM DE JOGO",displayWidth/2-400,displayHeight/2-200)
-                    }
+gameOver() {
+    textSize(40)
+    fill("white")
+ text("FIM DE JOGO",displayWidth/2-400,displayHeight/2-200)
+    }
     
     end(){
        console.log("O Jogo Terminou");
        console.log(player.rank)
        this.gameOver();
-    }
-
-
-    addObstacles()
-    {       
-            var x, y;
-            //x= 200;
-            //x = random(0, width-100);
-            //x = random(0);
-            //x = random();
-            
-            
-            y = 0
-            var obstacle = createSprite(x, y);
-            obstacle.addImage("obstacle", obstacleImage);
-            obstacle.velocityY = 4;
-            obstacle.scale = 0.15;
-            obstacleGroup.add(obstacle);
     }
 }

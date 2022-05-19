@@ -1,10 +1,10 @@
 class Form{
     constructor(){
-       this.input = createInput("NOME");
-       this.button = createButton('Jogar');
+       this.input = createInput("Name");
+       this.button = createButton('Play');
        this.greeting = createElement('h2');
        this.title = createElement('h2');
-       this.reset = createButton('Reiniciar');
+       this.reset = createButton('Reset');
     }
     hide() {
         this.greeting.hide();
@@ -13,7 +13,7 @@ class Form{
         this.title.hide();
     }
     display() {
-        this.title.html("APANHADOR DE FRUTAS");
+        this.title.html("FRUIT CATCHER");
         this.title.position(350, 50);
         this.title.style('font-size', '70px');
         this.title.style('color', 'skyblue');
@@ -38,7 +38,7 @@ class Form{
             player.index = playerCount;
             player.update();
             player.updateCount(playerCount);
-            this.greeting.html("Olá, " + player.name)
+            this.greeting.html("Hello " + player.name)
             this.greeting.position(400,250);
             this.greeting.style('color', 'white');
             this.greeting.style('font-size', '100px');
